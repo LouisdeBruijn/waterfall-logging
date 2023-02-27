@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [main]
+    branches: [main, dev-phase-1]
   pull_request:
 
 jobs:
@@ -65,4 +65,8 @@ jobs:
 
       # And finally run tests. I'm using pytest and all my pytest config is in my `pyproject.toml`
       # so this line is super-simple. But it could be as complex as you need.
-      - run: poetry run pytest
+      - run: poetry run pytest -m "not performance"
+
+      # export requirements and development requirements
+      - run: poetry export -f requirements.txt --output requirements.txt
+      - run: poetry export -f requirements.txt --output requirements_dev.txt --with dev
