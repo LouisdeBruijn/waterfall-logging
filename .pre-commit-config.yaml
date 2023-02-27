@@ -59,5 +59,4 @@ repos:
         entry: pytest tests/
         language: system
         pass_filenames: false
-        always_run: true
         stages: [push]
