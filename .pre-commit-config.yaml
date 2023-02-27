@@ -56,7 +56,7 @@ repos:
     hooks:
     -   id: pytest
         name: pytest
-        entry: pytest tests/
+        entry: pytest -m "not performance"
         language: system
         pass_filenames: false
-        stages: [push]
+        stages: [commit, push]
