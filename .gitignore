@@ -45,3 +45,4 @@ poetry/core/*
 *.log
 metastore_db/*
 
+exclude/*
