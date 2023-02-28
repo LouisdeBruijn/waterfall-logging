@@ -1,9 +1,7 @@
-[![Version](https://img.shields.io/pypi/v/waterfall-logging)](https://pypi.org/project/waterfall-statistics/)
-
-[//]: # ([![Maintenance]&#40;https://img.shields.io/badge/Maintained%3F-yes-green.svg&#41;]&#40;https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity&#41;)
+[![Version](https://img.shields.io/pypi/v/waterfall-logging)](https://pypi.org/project/waterfall-logging/)
 [![](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Downloads](https://pepy.tech/badge/waterfall-logging)](https://pepy.tech/project/waterfall-statistics)
-![](https://img.shields.io/github/license/LouisdeBruijn/waterfall-logging)
+[![Downloads](https://pepy.tech/badge/waterfall-logging)](https://pepy.tech/project/waterfall-logging)
+[!](https://img.shields.io/github/license/LouisdeBruijn/waterfall-logging)
 [![Docs - GitHub.io](https://img.shields.io/static/v1?logo=readthdocs&style=flat&color=purple&label=docs&message=waterfall-statistics)][#docs-package]
 
 [#docs-package]: https://LouisdeBruijn.github.io/waterfall-logging/
