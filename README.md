@@ -35,7 +35,7 @@ pre-commit install --hook-type pre-commit --hook-type pre-push
 
 ## Documentation
 
-Documentation can be created using the following command:
+Documentation can be created via
 
 ```commandline
 mkdocs serve
