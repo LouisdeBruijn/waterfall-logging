@@ -48,4 +48,4 @@ jobs:
           path: ~/.cache/pre-commit
           key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Pre-commit hooks
-        uses: pre-commit/action@v3
+        uses: pre-commit/action@v3.0.0
