@@ -40,3 +40,9 @@ pip-wheel-metadata
 /poetry.toml
 
 poetry/core/*
+
+.derby.log
+*.log
+metastore_db/*
+
+exclude/*

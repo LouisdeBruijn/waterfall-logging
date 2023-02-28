@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "waterfall-logging"
+version = "0.1.0"
+description = "Waterfall statistic logging for data quality or filtering steps."
+authors = ["Louis de Bruijn"]
+maintainers = ["Louis de Bruijn"]
+license = "gnu-3.0"
+readme = "README.md"
+repository = "https://github.com/LouisdeBruijn/waterfall-logging"
+documentation = "https://LouisdeBruijn.github.io/waterfall-logging/"
+packages = [{include = "waterfall_logging", from = "src" },]
+keywords = ["waterfall", "DQ", "logging"]
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0"
+pandas = "^1.5.3"
+plotly = "^5.13.0"
+pyspark = "^3.3.1"
+tabulate = "^0.9.0"
+kaleido = "0.2.1"
+
+[tool.poetry.group.dev.dependencies]
+jupyterlab = "^3.6.1"
+pre-commit = "^3.1.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.1"
+numpy = "^1.24.2"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocstrings = {extras = ["python"], version = "^0.20.0"}
+mkdocs-material = "^9.0.12"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
