@@ -1,4 +1,4 @@
-name: python-dependencies-tests-pre-commit
+name: poetry-tests-pre-commit
 
 on:
   push:
