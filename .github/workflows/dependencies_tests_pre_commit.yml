@@ -24,6 +24,8 @@ jobs:
   setup_poetry:
     runs-on: ubuntu-latest
     steps:
+      - - uses: actions/checkout@v3
+
       - name: Setup Poetry
         uses: ./.github/workflows/actions/setup-poetry
 
