@@ -20,5 +20,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - uses: actions/checkout@v3
       - name: Setup Poetry
         uses: ./workflows/actions/setup_poetry/
