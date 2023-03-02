@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  setup_python:
+  poetry_tests_pre_commit:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -20,11 +20,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-
-  setup_poetry:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
       - name: Setup Poetry
         uses: ./.github/workflows/actions/setup-poetry
