@@ -24,4 +24,4 @@ jobs:
         with:
           path: dev
       - name: Setup Poetry
-        uses: ./.github/actions/setup-poetry
+        uses: .github/actions/setup-poetry
