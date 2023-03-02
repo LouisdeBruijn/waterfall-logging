@@ -1,5 +1,4 @@
 name: docs-build-publish
-description: "Deploys MkDocs, build package and publish to PyPi"
 
 on:
   release:

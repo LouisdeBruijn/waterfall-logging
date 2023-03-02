@@ -1,5 +1,4 @@
 name: python-dependencies-tests-pre-commit
-description: "Check dependencies, tests and pre-commit hooks on various Python versions."
 
 on:
   push:
