@@ -1,4 +1,5 @@
-name: setup_poetry
+name: "setup_poetry"
+description: "sets up Poetry and installs the dependencies"
 
 on:
   workflow_call:

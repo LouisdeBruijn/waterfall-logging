@@ -22,7 +22,7 @@ jobs:
           cache: 'poetry'
 
       - name: Setup Poetry
-        uses: https://github.com/LouisdeBruijn/waterfall-logging/.github/workflows/reusable-workflow.yml@dev
+        uses: ./.github/actions/setup_poetry.yml
 
       - name: Run tests
         run: poetry run pytest -m "not performance"
