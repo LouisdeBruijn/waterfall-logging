@@ -21,5 +21,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - uses: actions/checkout@v3
+        with:
+          path: dev
       - name: Setup Poetry
         uses: ./.github/actions/setup-poetry
