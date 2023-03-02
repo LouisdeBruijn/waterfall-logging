@@ -8,6 +8,7 @@ jobs:
   setup_poetry:
     runs-on: ${{ runner.os }}
     steps:
+      - uses: actions/checkout@v3
       - name: Install Poetry v.1.3.2
         uses: snok/install-poetry@v1
         with:
