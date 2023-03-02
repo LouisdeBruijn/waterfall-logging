@@ -21,4 +21,4 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Setup Poetry
-        uses: ./.github/workflows/actions/setup-poetry@dev
+        uses: ./.github/workflows/actions/setup-poetry
