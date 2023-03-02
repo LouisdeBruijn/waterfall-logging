@@ -1,14 +1,18 @@
 
 # Home
 
+Waterfall-logging is a Python package to log (distinct) column counts in a DataFrame, export it as a Markdown table and plot a Waterfall statistics figure.
+
+It provides an implementation in Pandas `PandasWaterfall` and PySpark `SparkWaterfall`.
+
 ## Project overview
 
 The documentation consists of four separate parts:
 
-1. [Tutorials](tutorials.md) are learning-oriented.
-2. [How-To Guides](how-to-guides.md) are task-oriented.
-3. [Reference](reference/log.md) is the technical documentation.
-4. [Explanation](explanation.md) is understanding-oriented.
+1. [Tutorials](tutorials/pandas.md) are learning-oriented
+2. [How-To Guides](how-to-guides/waterfall.md) are task-oriented
+3. [Reference](reference/log.md) is the technical documentation
+4. [Explanation](explanation.md) is understanding-oriented
 
 Quickly find what you're looking for depending on
 your use case by looking at the different pages.

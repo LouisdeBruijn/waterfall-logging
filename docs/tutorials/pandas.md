@@ -1,17 +1,18 @@
 
-A tutorial serves the needs of the user who is at study and they are learning-oriented.
 
+# Logging California housing data
 
-### Real-world example of data quality filtering steps
+!!! note
+    A tutorial serves the needs of the user who is at study and they are learning-oriented.
+
+## Helper functions
+
+Below you can find several helper functions to scope data.
 
 ```python
 from typing import Dict, Any
 
 import pandas as pd
-from sklearn import datasets
-
-from waterfall_logging.log import PandasWaterfall
-
 
 def filter_bedrooms(df: pd.DataFrame, settings: Dict[str, Any]):
     """Filters houses with at least one bedroom in the block."""
@@ -37,6 +38,16 @@ def join_new_house_data(df1: pd.DataFrame, df2: pd.DataFrame):
         join='outer',
         ignore_index=True,
     )
+```
+
+## Logging
+
+Below you can find the `PandasWaterfall` implementation for scoping a dataset imported from scikit-learn.
+
+```python
+from sklearn import datasets
+
+from waterfall_logging.log import PandasWaterfall
 
 
 california_housing = datasets.fetch_california_housing(as_frame=True)
@@ -53,19 +64,19 @@ waterfall_log = PandasWaterfall(table_name='california housing', columns=['MedIn
 waterfall_log.log(california_housing_df, reason='Raw california housing data', configuration_flag=None)
 
 california_housing_df = filter_bedrooms(california_housing_df, settings)
-waterfall_log.log(california_housing_df, reason='Select in-scope bedrooms', configuration_flag=settings['min_bedrooms'])
+waterfall_log.log(california_housing_df, reason='Select in-scope bedrooms', configuration_flag=f"{settings['min_bedrooms']}")
 
 if settings['join_new_houses']:
     waterfall_log.log(california_housing.frame, table_name='virginia housing', reason="Load Virginia's housing data", configuration_flag='n/a')
 
     california_housing_df = join_new_house_data(california_housing_df, california_housing.frame)
-    waterfall_log.log(california_housing_df, reason='Join houses w/ 0.5 to 1.0 average bedrooms', configuration_flag=settings['join_new_houses'])
+    waterfall_log.log(california_housing_df, reason='Join houses w/ 0.5 to 1.0 average bedrooms', configuration_flag=f"{settings['join_new_houses']}")
 
 california_housing_df = filter_household_members(california_housing_df, settings)
-waterfall_log.log(california_housing_df, reason='Maximum two occupants', configuration_flag=settings['max_occupants'])
+waterfall_log.log(california_housing_df, reason='Maximum two occupants', configuration_flag=f"{settings['max_occupants']}")
 
 california_housing_df = filter_house_age_range(california_housing_df, settings)
-waterfall_log.log(california_housing_df, reason='House age range', configuration_flag=settings['house_age'])
+waterfall_log.log(california_housing_df, reason='House age range', configuration_flag=f"{settings['house_age']}")
 
 waterfall_log.to_markdown('/output/tests/california_housing.md')
 
@@ -73,7 +84,13 @@ waterfall_log = PandasWaterfall(table_name='california housing')
 waterfall_log.read_markdown('/output/tests/california_housing.md',
     sep='|', header=0, index_col=False, skiprows=[1], skipinitialspace=True
 )
+```
 
+## Plotting
+
+Below you can see how to plot the markdown table.
+
+```python
 fig = waterfall_log.plot(y_col='MedInc', y_col_delta='Δ MedInc', x_col='Reason', drop_zero_delta=False,
     textfont=dict(family='sans-serif', size=11),
     connector={'line': {'color': 'rgba(0,0,0,0)'}},
@@ -98,4 +115,4 @@ fig.update_traces(
 fig.write_image('/output/tests/california_housing.png')
 ```
 
-![image](/images/california_housing.png)
+![image](../images/california_housing.png)

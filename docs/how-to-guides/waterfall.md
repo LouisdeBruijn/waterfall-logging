@@ -1,5 +1,97 @@
 
-A how-to guide serves the needs of the user who is at work. Its obligation is to help the user accomplish a task.
+!!! note
+    A how-to guide serves the needs of the user who is at work. Its obligation is to help the user accomplish a task.
+
+### Count
+
+Count columns via the `columns` parameter in the `__init__`
+of the `PandasWaterfall` or `SparkWaterfall` class. An example is provided below.
+
+```python
+from waterfall_logging.log import PandasWaterfall, SparkWaterfall
+pandas_w = PandasWaterfall(columns=['user_id'])
+
+spark_w = SparkWaterfall(columns=['user_id'])
+```
+
+::: waterfall_logging.log.Waterfall.__init__
+    options:
+      show_root_toc_entry: False
+      show_root_heading: False
+      show_root_full_path: False
+      show_signature_annotations: True
+
+
+### Count distinct
+
+Count distinct columns via the `distinct_columns` parameter in the `__init__`
+of the `PandasWaterfall` or `SparkWaterfall` class. An example is provided below.
+
+```python
+from waterfall_logging.log import PandasWaterfall, SparkWaterfall
+pandas_w = PandasWaterfall(distinct_columns=['user_id'])
+
+spark_w = SparkWaterfall(distinct_columns=['user_id'])
+```
+
+!!! note
+    Column names in `distinct_columns` overwrite names in `columns` with distinct counts!
+
+::: waterfall_logging.log.Waterfall.__init__
+    options:
+      show_root_toc_entry: False
+      show_root_heading: False
+      show_root_full_path: False
+      show_signature_annotations: True
+
+### Drop NaN
+
+Drop NaN values in the (distinct) counts of your Pandas or Spark DataFrame.
+
+```python
+from waterfall_logging.log import PandasWaterfall, SparkWaterfall
+pandas_w = PandasWaterfall(columns=['A'], dropna=True)
+
+spark_w = SparkWaterfall(columns=['A'], dropna=True)
+```
+
+::: waterfall_logging.log.Waterfall.__init__
+    options:
+      show_root_toc_entry: False
+      show_root_heading: False
+      show_root_full_path: False
+      show_signature_annotations: True
+
+### Log Waterfall step
+
+Logs a Pandas or Spark DataFrame.
+
+```python
+import pandas as pd
+import pyspark
+
+from waterfall_logging.log import PandasWaterfall, SparkWaterfall
+
+df = pd.DataFrame(data={'A': [0,1,2,3,4,5], 'B': ['id1', 'id2', 'id3', 'id4', 'id4']})
+
+pandas_w = PandasWaterfall(columns=['A'], distinct_columns=['B'])
+pandas_w.log(table=df, reason='example', configuration_flag='initial')
+
+spark = pyspark.sql.SparkSession.builder.enableHiveSupport().appName(str(__file__)).getOrCreate()
+sdf = spark.createDataFrame(df)
+
+spark_w = SparkWaterfall(columns=['A'], distinct_columns=['B'])
+spark_w.log(table=sdf, reason='example', configuration_flag='initial')
+```
+
+::: waterfall_logging.log.Waterfall.log
+    options:
+      show_root_toc_entry: False
+      show_root_heading: False
+      show_root_full_path: False
+      show_signature_annotations: True
+
+
 
 ### Write to Markdown file
 
@@ -40,18 +132,6 @@ Some useful arguments:
       show_signature_annotations: True
 
 
-### Log Waterfall step
-
-Logs Waterfall
-
-::: waterfall_logging.log.Waterfall.log
-    options:
-      show_root_toc_entry: False
-      show_root_heading: False
-      show_root_full_path: False
-      show_signature_annotations: True
-
-
 ### Plot Waterfall
 
 Plots Waterfall logging tables in a chart.
@@ -59,7 +139,7 @@ Plots Waterfall logging tables in a chart.
 Under the hood plots uses a Plotly Waterfall chart [plotly.graph_objects.Waterfall](https://plotly.com/python/waterfall-charts/).
 
 !!! note
-    Make sure to use unique `reason` arguments for each logging step, otherwise your plot will look strange!
+    Make sure to use an unique `reason` arguments for each logging step, otherwise your plot will look strange!
 
 ::: waterfall_logging.log.Waterfall.plot
     options:

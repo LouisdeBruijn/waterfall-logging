@@ -1,5 +1,5 @@
 [![Version](https://img.shields.io/pypi/v/waterfall-logging)](https://pypi.org/project/waterfall-logging/)
-[![](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![](https://img.shields.io/badge/python-3.5+-blue.svg)](https://www.python.org/downloads/)
 [![Downloads](https://pepy.tech/badge/waterfall-logging)](https://pepy.tech/project/waterfall-logging)
 [!](https://img.shields.io/github/license/LouisdeBruijn/waterfall-logging)
 [![Docs - GitHub.io](https://img.shields.io/static/v1?logo=readthdocs&style=flat&color=purple&label=docs&message=waterfall-statistics)][#docs-package]
@@ -8,7 +8,9 @@
 
 # Waterfall-logging
 
-Waterfall-logging is a Python package that enables you to log column counts in a Pandas DataFrames, export it as a Markdown table and plot a Waterfall statistics figure.
+Waterfall-logging is a Python package to log (distinct) column counts in a DataFrame, export it as a Markdown table and plot a Waterfall statistics figure.
+
+It provides an implementation in Pandas `PandasWaterfall` and PySpark `SparkWaterfall`.
 
 Documentation with examples can be found [here](https://LouisdeBruijn.github.io/waterfall-logging).
 
