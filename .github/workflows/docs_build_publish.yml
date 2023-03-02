@@ -11,13 +11,14 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
 
       - name: Setup Poetry
-        uses: ./.github/actions/setup_poetry/action.yml
+        uses: ./.github/workflows/actions/setup-poetry
 
       - name: Deploy Mkdocs
         run: mkdocs gh-deploy
