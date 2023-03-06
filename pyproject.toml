@@ -9,7 +9,7 @@ readme = "README.md"
 repository = "https://github.com/LouisdeBruijn/waterfall-logging"
 documentation = "https://LouisdeBruijn.github.io/waterfall-logging/"
 packages = [{include = "waterfall_logging", from = "src" },]
-keywords = ["waterfall", "DQ", "logging"]
+keywords = ["waterfall", "data-quality-checks", "logging", "pandas", "pyspark"]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"

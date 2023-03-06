@@ -1,16 +1,15 @@
-[![Version](https://img.shields.io/pypi/v/waterfall-logging)](https://pypi.org/project/waterfall-statistics/)
-
-[//]: # ([![Maintenance]&#40;https://img.shields.io/badge/Maintained%3F-yes-green.svg&#41;]&#40;https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity&#41;)
-[![](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Downloads](https://pepy.tech/badge/waterfall-logging)](https://pepy.tech/project/waterfall-statistics)
-![](https://img.shields.io/github/license/LouisdeBruijn/waterfall-logging)
-[![Docs - GitHub.io](https://img.shields.io/static/v1?logo=readthdocs&style=flat&color=purple&label=docs&message=waterfall-statistics)][#docs-package]
+[![Version](https://img.shields.io/pypi/v/waterfall-logging)](https://pypi.org/project/waterfall-logging/)
+[![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Downloads](https://pepy.tech/badge/waterfall-logging)](https://pepy.tech/project/waterfall-logging)
+[![Docs - GitHub.io](https://img.shields.io/static/v1?logo=readthdocs&style=flat&color=blue&label=docs&message=waterfall-statistics)][#docs-package]
 
 [#docs-package]: https://LouisdeBruijn.github.io/waterfall-logging/
 
 # Waterfall-logging
 
-Waterfall-logging is a Python package that enables you to log column counts in a Pandas DataFrames, export it as a Markdown table and plot a Waterfall statistics figure.
+Waterfall-logging is a Python package to log (distinct) column counts in a DataFrame, export it as a Markdown table and plot a Waterfall statistics figure.
+
+It provides an implementation in Pandas `PandasWaterfall` and PySpark `SparkWaterfall`.
 
 Documentation with examples can be found [here](https://LouisdeBruijn.github.io/waterfall-logging).
 
@@ -37,7 +36,7 @@ pre-commit install --hook-type pre-commit --hook-type pre-push
 
 ## Documentation
 
-Documentation can be created using the following command:
+Documentation can be created via
 
 ```commandline
 mkdocs serve
@@ -64,7 +63,7 @@ bicycle_rides_log = PandasWaterfall(table_name='rides', columns=['brand', 'ride_
 bicycle_rides_log.log(table=bicycle_rides, reason='Logging initial column values', configuration_flag='')
 
 bicycle_rides = bicycle_rides.loc[lambda row: row['wheel_size'] > 30]
-bicycle_rides_log.log(table=bicycle_rides, reason="Remove small wheels",
+bicycle_rides_log.log(table=bicycle_rides, reason='Remove small wheels',
     configuration_flag='small_wheel=False')
 
 print(bicycle_rides_log.to_markdown())

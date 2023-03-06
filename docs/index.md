@@ -1,14 +1,18 @@
 
 # Home
 
+Waterfall-logging is a Python package to log (distinct) column counts in a DataFrame, export it as a Markdown table and plot a Waterfall statistics figure.
+
+It provides an implementation in Pandas `PandasWaterfall` and PySpark `SparkWaterfall`.
+
 ## Project overview
 
-The documentation consists of four separate parts:
+The documentation consists of four separate parts
 
-1. [Tutorials](tutorials.md) are learning-oriented.
-2. [How-To Guides](how-to-guides.md) are task-oriented.
-3. [Reference](reference/log.md) is the technical documentation.
-4. [Explanation](explanation.md) is understanding-oriented.
+1. [Tutorials](tutorials/pandas.md) are learning-oriented
+2. [How-To Guides](how-to-guides/waterfall.md) are task-oriented
+3. [Reference](reference/log.md) is the technical documentation
+4. [Explanation](explanation.md) is understanding-oriented
 
 Quickly find what you're looking for depending on
 your use case by looking at the different pages.
@@ -32,15 +36,14 @@ bicycle_rides = pd.DataFrame(data=[
     ['Gazelle', 'comfort', 31, '2023-02-15', 1],
     ['Shimano', 'race', 31, '2023-02-16', 2],
     ['Batavia', 'comfort', 30, '2023-02-17', 3],
-], columns=['brand', 'ride_type', 'wheel_size', 'date', 'bike_id']
-)
+], columns=['brand', 'ride_type', 'wheel_size', 'date', 'bike_id'])
 
 bicycle_rides_log = PandasWaterfall(table_name='rides', columns=['brand', 'ride_type', 'wheel_size'],
     distinct_columns=['bike_id'])
 bicycle_rides_log.log(table=bicycle_rides, reason='Logging initial column values', configuration_flag='')
 
 bicycle_rides = bicycle_rides.loc[lambda row: row['wheel_size'] > 30]
-bicycle_rides_log.log(table=bicycle_rides, reason="Remove small wheels",
+bicycle_rides_log.log(table=bicycle_rides, reason='Remove small wheels',
     configuration_flag='small_wheel=False')
 
 print(bicycle_rides_log.to_markdown())
