@@ -35,11 +35,11 @@ nav:
   - Tutorials:
     - Pandas: 'tutorials/pandas.md'
     - PySpark: 'tutorials/pyspark.md'
+    - Decorator: 'tutorials/decorator.md'
+    - Context manager: 'tutorials/context_manager.md'
   - How-To Guides:
     - Waterfall: 'how-to-guides/waterfall.md'
     - Base class: 'how-to-guides/base_class.md'
-    - Decorator: 'how-to-guides/decorator.md'
-    - Context manager: 'how-to-guides/context_manager.md'
   - Reference:
       - Log: 'reference/log.md'
       - Decorator: 'reference/decorator.md'

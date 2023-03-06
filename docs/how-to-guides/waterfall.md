@@ -1,6 +1,6 @@
 
-!!! note
-    A how-to guide serves the needs of the user who is at work. Its obligation is to help the user accomplish a task.
+This part of the project documentation focuses on a *task-oriented* approach.
+Use it as a guide to accomplish any of the `Waterfall` class methods below.
 
 ### Count
 
@@ -9,6 +9,7 @@ of the `PandasWaterfall` or `SparkWaterfall` class. An example is provided below
 
 ```python
 from waterfall_logging.log import PandasWaterfall, SparkWaterfall
+
 pandas_w = PandasWaterfall(columns=['user_id'])
 
 spark_w = SparkWaterfall(columns=['user_id'])
@@ -29,13 +30,14 @@ of the `PandasWaterfall` or `SparkWaterfall` class. An example is provided below
 
 ```python
 from waterfall_logging.log import PandasWaterfall, SparkWaterfall
+
 pandas_w = PandasWaterfall(distinct_columns=['user_id'])
 
 spark_w = SparkWaterfall(distinct_columns=['user_id'])
 ```
 
 !!! note
-    Column names in `distinct_columns` overwrite names in `columns` with distinct counts!
+    Column names in `distinct_columns` overwrite names in `columns` with distinct counts.
 
 ::: waterfall_logging.log.Waterfall.__init__
     options:
@@ -50,6 +52,7 @@ Drop NaN values in the (distinct) counts of your Pandas or Spark DataFrame.
 
 ```python
 from waterfall_logging.log import PandasWaterfall, SparkWaterfall
+
 pandas_w = PandasWaterfall(columns=['A'], dropna=True)
 
 spark_w = SparkWaterfall(columns=['A'], dropna=True)

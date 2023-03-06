@@ -1,13 +1,17 @@
 
 
-# Logging California housing data
+# PandasWaterfall
 
-!!! note
-    A tutorial serves the needs of the user who is at study and they are learning-oriented.
+This part of the project documentation focuses on a *learning-oriented* approach.
+Use the tutorial below to learn how this package can be useful.
 
-## Helper functions
+## California housing data
 
-Below you can find several helper functions to scope data.
+In this tutorial you'll learn how the `PandasWaterfall` can log and plot several filtering steps on the California housing dataset.
+
+### Helper functions
+
+Below you can find several helper functions to scope or filter the dataset.
 
 ```python
 from typing import Dict, Any
@@ -18,18 +22,15 @@ def filter_bedrooms(df: pd.DataFrame, settings: Dict[str, Any]):
     """Filters houses with at least one bedroom in the block."""
     return df.loc[lambda row: row['AveBedrms'] >= settings['min_bedrooms']]
 
-
 def filter_household_members(df: pd.DataFrame, settings: Dict[str, Any]):
     """Filters houses for one or two household members."""
     return df.loc[lambda row: row['AveOccup'] <= settings['max_occupants']]
-
 
 def filter_house_age_range(df: pd.DataFrame, settings: Dict[str, Any]):
     """Filters houses aged between two ages."""
     return df.loc[
         lambda row: (row['HouseAge'] >= settings['house_age'][0]) & (row['HouseAge'] <= settings['house_age'][1])
     ]
-
 
 def join_new_house_data(df1: pd.DataFrame, df2: pd.DataFrame):
     """Appends houses with an average number of bedrooms in the block between 0.5 and 1.0."""
@@ -78,10 +79,10 @@ waterfall_log.log(california_housing_df, reason='Maximum two occupants', configu
 california_housing_df = filter_house_age_range(california_housing_df, settings)
 waterfall_log.log(california_housing_df, reason='House age range', configuration_flag=f"{settings['house_age']}")
 
-waterfall_log.to_markdown('/output/tests/california_housing.md')
+waterfall_log.to_markdown('output/tests/california_housing.md')
 
 waterfall_log = PandasWaterfall(table_name='california housing')
-waterfall_log.read_markdown('/output/tests/california_housing.md',
+waterfall_log.read_markdown('output/tests/california_housing.md',
     sep='|', header=0, index_col=False, skiprows=[1], skipinitialspace=True
 )
 ```
@@ -112,7 +113,7 @@ fig.update_traces(
     textposition='outside',
 )
 
-fig.write_image('/output/tests/california_housing.png')
+fig.write_image('output/tests/california_housing.png')
 ```
 
 ![image](../images/california_housing.png)

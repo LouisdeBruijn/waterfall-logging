@@ -7,7 +7,36 @@ from waterfall_logging.log import Waterfall
 
 
 def waterfall(log: Waterfall, variable_names: List[str], markdown_kwargs: Optional[Dict] = None):
-    """"""
+    """Waterfall context manager decorator.
+
+    Args:
+        log (Waterfall): Waterfall object
+        variable_names (List): array of variables names to log waterfall
+        markdown_kwargs (dict): keyword arguments to save the markdown with to_markdown(**markdown_kwargs)
+
+    Examples:
+        >>> import pandas as pd
+        >>> import numpy as np
+        >>> from waterfall_logging.log import PandasWaterfall
+        >>> from waterfall_logging.context_manager import waterfall
+        >>> waterfall_log = PandasWaterfall(table_name='context_manager_example', columns=['col1'])
+        >>> @waterfall(log=waterfall_log, variable_names=['table'], markdown_kwargs={'buf': 'ctx_manager_example.md'})
+        ... def main():
+        ...     table = pd.DataFrame({'col1': [0, np.nan, 1, 2, 3], 'col2': [3, 4, np.nan, 5, 6]})
+        ...     table.dropna(axis=0)
+        ...
+        >>> main()
+        >>> print(waterfall_log.to_markdown())
+        | Table                   |   col1 |   Δ col1 |   Rows |   Δ Rows | Reason   | Configurations flag   |
+        |:------------------------|-------:|---------:|-------:|---------:|:---------|:----------------------|
+        | context_manager_example |      5 |        0 |      5 |        0 |          |                       |
+        >>> print("The `waterfall_log` is also saved in the file `ctx_manager_example.md`!")
+
+
+    Returns:
+        decorator (Callable): decorator object
+
+    """
     markdown_kwargs = {} if not markdown_kwargs else markdown_kwargs
 
     def decorator_waterfall(method: Callable):
@@ -35,7 +64,7 @@ class WaterfallContext:
             log (Waterfall): waterfall logging object
             name (str): name of the function that is to de debugged
             variable_names (List): array of variables names to log waterfall
-            markdown_kwargs (dict): Location to save the markdown file
+            markdown_kwargs (dict): keyword arguments to save the markdown with to_markdown(**markdown_kwargs)
 
         """
         self.name = name
