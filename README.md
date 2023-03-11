@@ -44,7 +44,7 @@ mkdocs serve
 
 ## Usage
 
-Instructions are provided in the documentation's [how-to-guides](https://LouisdeBruijn.github.io/waterfall-logging//how-to-guides/).
+Instructions are provided in the [documentation](https://LouisdeBruijn.github.io/waterfall-logging/).
 
 ```python
 import pandas as pd
@@ -67,9 +67,10 @@ bicycle_rides_log.log(table=bicycle_rides, reason='Remove small wheels',
     configuration_flag='small_wheel=False')
 
 print(bicycle_rides_log.to_markdown())
-
+'''
 | Table   |   brand |   Δ brand |   ride_type |   Δ ride_type |   wheel_size |   Δ wheel_size |   bike_id |   Δ bike_id |   Rows |   Δ Rows | Reason                        | Configurations flag   |
 |:--------|--------:|----------:|------------:|--------------:|-------------:|---------------:|----------:|------------:|-------:|---------:|:------------------------------|:----------------------|
 | rides   |       4 |         0 |           4 |             0 |            4 |              0 |         3 |           0 |      4 |        0 | Logging initial column values |                       |
 | rides   |       2 |        -2 |           2 |            -2 |            2 |             -2 |         2 |          -1 |      2 |       -2 | Remove small wheels           | small_wheel=False     |
+'''
 ```
