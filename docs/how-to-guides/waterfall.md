@@ -184,4 +184,4 @@ fig.update_traces(
 
 fig.write_image('output/tests/read_markdown_table.png')
 ```
-![image](/images/read_markdown_table.png)
+![image](../images/read_markdown_table.png)
