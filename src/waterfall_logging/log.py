@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import abc
+import logging
 import warnings
 from typing import List
 
@@ -24,6 +25,7 @@ class Waterfall(abc.ABC):
         dropna: bool = False,
         delta_prefix: str = "Δ ",
         row_count_column: str = "Rows",
+        logger: logging.Logger | None = None,
     ):
         """
 
@@ -34,7 +36,7 @@ class Waterfall(abc.ABC):
             delta_prefix (str): Prefix for column names with discrete difference (delta) with previous row
             dropna (bool): Whether to exclude NaN in the row counts
             row_count_column (str): Column name for an added column that counts rows in table
-
+            logger (logging.Logger): Instances of the Logger class represent a single logging channel
         """
         self.table_name = table_name
         self.columns = iterable_to_list(columns)
@@ -42,6 +44,7 @@ class Waterfall(abc.ABC):
         self.delta_prefix = delta_prefix
         self.dropna = dropna
         self.row_count_column = row_count_column
+        self.logger = logger
 
         self._input_columns = self.columns + self.distinct_columns
         self._all_columns = self._input_columns.copy()
@@ -87,6 +90,7 @@ class Waterfall(abc.ABC):
         reason: str | None = None,
         configuration_flag: str | None = None,
         table_name: str | None = None,
+        log_level: int | None = None,
     ) -> None:
         """Logs table (distinct) counts to logging DataFrame.
 
@@ -95,6 +99,7 @@ class Waterfall(abc.ABC):
             reason (str): Specifies reasoning for DataFrame filtering step
             configuration_flag (str): Specifies configurations flag used for DataFrame filtering step
             table_name (str): First column in table is the `table id` column that should contain the table name value
+            log_level (int): logs a message with level `log_level`
 
         Examples:
             >>> waterfall = PandasWaterfall()
@@ -124,6 +129,9 @@ class Waterfall(abc.ABC):
         calculated_columns = [table_name] + column_entries + [reason, configuration_flag]
 
         self._log.loc[len(self._log)] = calculated_columns
+
+        if self.logger:
+            self.logger.log(level=log_level, msg=self._log.iloc[:, 0])
 
     def read_markdown(
         self,
