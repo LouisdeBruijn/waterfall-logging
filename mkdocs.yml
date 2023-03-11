@@ -40,11 +40,11 @@ nav:
   - How-To Guides:
     - Waterfall: 'how-to-guides/waterfall.md'
     - Base class: 'how-to-guides/base_class.md'
-  - Reference:
-      - Log: 'reference/log.md'
-      - Decorator: 'reference/decorator.md'
-      - Context manager: 'reference/context_manager.md'
-  - explanation.md
+  - Explanations:
+      - Log: 'explanations/log.md'
+      - Decorator: 'explanations/decorator.md'
+      - Context manager: 'explanations/context_manager.md'
+  - references.md
 
 repo_url: https://github.com/LouisdeBruijn/waterfall-logging
 repo_name: waterfall-logging
