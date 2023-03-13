@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "waterfall-logging"
-version = "0.1.1"
+version = "0.1.0"
 description = "Waterfall statistic logging for data quality or filtering steps."
 authors = ["Louis de Bruijn"]
 maintainers = ["Louis de Bruijn"]

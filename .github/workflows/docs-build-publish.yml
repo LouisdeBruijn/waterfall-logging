@@ -31,7 +31,7 @@ jobs:
         with:
           BRANCH: "master"
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+          PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_TEST_API_TOKEN }}
           PUBLISH_REGISTRY_USERNAME: "__token__"
           PACKAGE_DIRECTORY: "./src/"
           PUBLISH_REGISTRY: "https://test.pypi.org/legacy/"
