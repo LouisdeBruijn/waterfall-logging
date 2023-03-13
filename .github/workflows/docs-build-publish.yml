@@ -21,7 +21,7 @@ jobs:
         uses: ./.github/workflows/actions/setup-poetry
 
       - name: Deploy Mkdocs
-        run: poetry run mkdocs gh-deploy
+        run: poetry run mkdocs gh-deploy --force
 
       - name: Building Package Distributions
         run: poetry build
