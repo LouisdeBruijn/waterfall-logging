@@ -34,6 +34,6 @@ jobs:
           PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
           PUBLISH_REGISTRY_USERNAME: "__token__"
           PACKAGE_DIRECTORY: "./src/"
-          PUBLISH_REGISTRY: "https://test.pypi.org/simple/"
+          PUBLISH_REGISTRY: "https://test.pypi.org/legacy/"
           POETRY_VERSION: "1.3.2"
           POETRY_CORE_VERSION: "1.4.0"
